@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <script src="https://cdn.tailwindcss.com"></script>
+     <title>Quiz</title>
+</head>
+
+<body>
+     <div id="StartScreen">
+          <h2 class="">Quiz Name</h2>
+
+          <button class="" onclick="StartQuiz()">Start Quiz</button>
+     </div>
+     <div id="QuizScreen">
+          <h2 class="">QUIZ</h2>
+
+          <h3 id="Question" class=""></h3>
+          <button id="ans1" onclick="CheckAnswer('ans1')" class=""></button>
+          <button id="ans2" onclick="CheckAnswer('ans2')"></button>
+          <button id="ans3" onclick="CheckAnswer('ans3')"></button>
+          <button id="ans4" onclick="CheckAnswer('ans4')"></button>
+     </div>
+
+     <div id="ResetScreen">
+          <h3 class="">Quiz Over</h3>
+          <p id="Total" class=""></p>
+          <button onclick="RestartQuiz()" class="">Restart</button>
+     </div>
+</body>
+
+<script src="functions.js"></script>
+
+</html>

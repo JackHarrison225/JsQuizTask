@@ -1,0 +1,14 @@
+{
+  "name": "jsquiztaskfile",
+  "version": "1.0.0",
+  "description": "\"# JsQuizTask\"",
+  "main": "functions.js",
+  "scripts": {
+    "test": "nodemon functions.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^3.0.2"
+  }
+}
