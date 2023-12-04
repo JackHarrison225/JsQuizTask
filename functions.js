@@ -1,6 +1,5 @@
 //Quiz JS
-
-
+ 
 //declare vars
 let score = 0;
 let currentQestion = 0;
