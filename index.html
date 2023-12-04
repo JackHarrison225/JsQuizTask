@@ -7,13 +7,16 @@
      <title>Quiz</title>
 </head>
 
-<body>
-     <div id="StartScreen">
-          <h2 class="">Quiz Name</h2>
+<body class="h-full w-full">
+     <!-- start screen for before the quiz -->
+     <div id="StartScreen" class="">
+          <h2>Quiz Name</h2>
 
           <button class="" onclick="StartQuiz()">Start Quiz</button>
      </div>
-     <div id="QuizScreen">
+
+     <!-- screen for quiz -->
+     <div id="QuizScreen" class="">
           <h2 class="">QUIZ</h2>
 
           <h3 id="Question" class=""></h3>
@@ -23,7 +26,8 @@
           <button id="ans4" onclick="CheckAnswer('ans4')"></button>
      </div>
 
-     <div id="ResetScreen">
+     <!-- end of quiz screen for total score and restart button -->
+     <div id="ResetScreen" class="">
           <h3 class="">Quiz Over</h3>
           <p id="Total" class=""></p>
           <button onclick="RestartQuiz()" class="">Restart</button>
