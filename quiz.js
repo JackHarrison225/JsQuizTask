@@ -1,70 +1,84 @@
 //Quiz JS
- 
+
 //declare vars
 let score = 0;
 let currentQestion = 0;
 let questionArr= [
      {
-          question: "question 1",
-          answerA: "correct",
-          answerB: "aswer 2",
-          answerC: "aswer 3",
-          answerD: "aswer 4",
-          correctAnswer: "correct"
+          question: "What Is the race librarian?",
+          answerA: "Monkey",
+          answerB: "Ape",
+          answerC: "Human",
+          answerD: "Goblin",
+          correctAnswer: "Ape"
      },
      {
-          question: "question 2",
-          answerA: "aswer 1",
-          answerB: "correct",
-          answerC: "aswer 3",
-          answerD: "aswer 4",
-          correctAnswer: "correct"
+          question: "In monstrous regiment what race is Maladict?",
+          answerA: "Human",
+          answerB: "Egor",
+          answerC: "Troll",
+          answerD: "Vampire",
+          correctAnswer: "Vampire"
      },
      {
-          question: "question 3",
-          answerA: "aswer 1",
-          answerB: "aswer 2",
-          answerC: "aswer 3",
-          answerD: "correct",
-          correctAnswer: "correct"
+          question: "What is the name of the Captain Sam Vimes' son?",
+          answerA: "Detritus",
+          answerB: "Dibbler",
+          answerC: "Sam",
+          answerD: "Mort",
+          correctAnswer: "Sam"
      },
      {
-          question: "question 4",
-          answerA: "aswer 1",
-          answerB: "correct",
-          answerC: "aswer 3",
-          answerD: "aswer 4",
-          correctAnswer: "correct"
+          question: "Who is Deaths granddaughter?",
+          answerA: "Susan",
+          answerB: "Ronny",
+          answerC: "Lobsang",
+          answerD: "Rincewind",
+          correctAnswer: "Susan"
      },
      {
-          question: "question 5",
-          answerA: "aswer 1",
-          answerB: "aswer 2",
-          answerC: "tapioka",
-          answerD: "aswer 4",
-          correctAnswer: "correct"
+          question: "Who was the Patrition in the book Night Watch?",
+          answerA: "Giggling Lord Smince",
+          answerB: "Lord Havelock Vetinari",
+          answerC: "Homicidal Lord Winder",
+          answerD: "Mad Lord Snapcase",
+          correctAnswer: "Homicidal Lord Winder"
      },
+     {
+          question: "Who is the Post Master in going postal?",
+          answerA: "Reacher Gilt",
+          answerB: "Mustrum Ridcully",
+          answerC: "Moist von Lipwig",
+          answerD: "Mr. Gryle",
+          correctAnswer: "Moist von Lipwig"
+     },
+     {
+          question: "What is the name of deaths apprentice?",
+          answerA: "Albert",
+          answerB: "Mort",
+          answerC: "Susan",  
+          answerD: "Drumknott",
+          correctAnswer: "Mort"
+     }
 ];
 
 
 //declare Functions
-function PlayQuiz(Arr, i)
-{
-     if(i+1 > Arr.length)
+function PlayQuiz(Arr)
+{    
+     if(currentQestion+1 > Arr.length)
      {
           QuizEnd();
      }
      else{
-          AskQuextion(Arr[i]);
-          SetAnswers(Arr[i]);
+          AskQuextion(Arr[currentQestion]); //randomQestion
+          SetAnswers(Arr[currentQestion]); //randomQestion
      }
-     
 }
 
 function AskQuextion(Arr)
 {
      document.getElementById("Question").innerText = Arr.question;
-     console.log(Arr.question)
 }
 
 //this function could be done in a better way 
@@ -115,7 +129,7 @@ function CheckAnswer(ansID)
      }
 
      currentQestion++;
-     return PlayQuiz(questionArr, currentQestion)
+     return PlayQuiz(questionArr)
 }
 
 function ScoreUp(){
@@ -123,22 +137,23 @@ function ScoreUp(){
 }
 
 function SetTotalScore(){
-     document.getElementById("Total").innerText = "You Scored " + score;
+     document.getElementById("Total").innerText = "You Scored " + score + "/" + questionArr.length;
 }
 
-function RestartQuiz(){
+function Home(){
      score = 0;
      currentQestion = 0;
      document.getElementById("StartScreen").hidden = false;
      document.getElementById("QuizScreen").hidden = true;
      document.getElementById("ResetScreen").hidden = true;
+     document.getElementById("CalcScreen").hidden = true;
      
 }
 function StartQuiz(){
      document.getElementById("ResetScreen").hidden = true;
      document.getElementById("QuizScreen").hidden = false;
      document.getElementById("StartScreen").hidden = true;   
-     PlayQuiz(questionArr, currentQestion)
+     PlayQuiz(questionArr);
 }
 function QuizEnd(){
      document.getElementById("QuizScreen").hidden = true;
@@ -148,6 +163,6 @@ function QuizEnd(){
 
 
 //play quiz
-PlayQuiz(questionArr, currentQestion)
 document.getElementById("ResetScreen").hidden = true;
 document.getElementById("QuizScreen").hidden = true;
+PlayQuiz(questionArr)

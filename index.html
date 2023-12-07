@@ -9,31 +9,97 @@
 
 <body class="h-full w-full">
      <!-- start screen for before the quiz -->
-     <div id="StartScreen" class="">
-          <h2>Quiz Name</h2>
+     <div id="StartScreen">
+          <div class="grid grid-cols-4 grid-rows-3 w-[50%] h-[50%] gap-4  p-4
+          mx-[25%] my-[12.5%] bg-slate-500 rounded-lg shadow-lg shadow-black">
 
-          <button class="" onclick="StartQuiz()">Start Quiz</button>
+               <h2 class="col-span-4 text-center">Page Name</h2>
+
+               <button 
+               class="bg-green-700 rounded-xl p-3 row-start-3 col-start-1 col-span-2" 
+               onclick="StartQuiz()">Quiz</button>
+
+               <button 
+               class="bg-green-700 rounded-xl  md:p-3 row-start-3 col-start-3 col-span-2 overflow-hidden" 
+               onclick="StartCalc()">Calculator</button>
+          </div>
      </div>
 
      <!-- screen for quiz -->
-     <div id="QuizScreen" class="">
-          <h2 class="">QUIZ</h2>
+     <div id="QuizScreen"> 
+          <div class="grid grid-cols-4 grid-rows-3 w-[50%] h-[50%] gap-4  p-4
+               mx-[25%] my-[12.5%] bg-slate-500 rounded-lg shadow-lg shadow-black ">
+               <h2 class="col-span-4 text-center">QUIZ</h2>
 
-          <h3 id="Question" class=""></h3>
-          <button id="ans1" onclick="CheckAnswer('ans1')" class=""></button>
-          <button id="ans2" onclick="CheckAnswer('ans2')"></button>
-          <button id="ans3" onclick="CheckAnswer('ans3')"></button>
-          <button id="ans4" onclick="CheckAnswer('ans4')"></button>
+               <h3 id="Question" class="col-span-4 row-span-1"></h3>
+               <button id="ans1" onclick="CheckAnswer('ans1')" 
+                    class="bg-slate-200 rounded-xl p-3
+                    md:row-start-3 md:col-span-1 col-span-4"></button>
+               <button id="ans2" onclick="CheckAnswer('ans2')" 
+                    class="bg-slate-200 rounded-xl p-3
+                    md:row-start-3 md:col-span-1 col-span-4"></button>
+               <button id="ans3" onclick="CheckAnswer('ans3')" 
+                    class="bg-slate-200 rounded-xl p-3
+                    md:row-start-3 md:col-span-1 col-span-4"></button>
+               <button id="ans4" onclick="CheckAnswer('ans4')" 
+                    class="bg-slate-200 rounded-xl p-3
+                    md:row-start-3 md:col-span-1 col-span-4"></button>
+          </div>
      </div>
 
      <!-- end of quiz screen for total score and restart button -->
-     <div id="ResetScreen" class="">
-          <h3 class="">Quiz Over</h3>
-          <p id="Total" class=""></p>
-          <button onclick="RestartQuiz()" class="">Restart</button>
+     <div id="ResetScreen">
+          <div class="grid grid-cols-4 grid-rows-3 w-[50%] h-[50%] gap-4 p-4 
+          mx-[25%] my-[12.5%] bg-slate-500 rounded-lg shadow-lg shadow-black">
+               <h3 class="col-span-4 text-center">Quiz Over</h3>
+               <p id="Total" class="col-span-4"></p>
+               <button onclick="Home()" 
+               class="bg-red-700 rounded-xl p-3 
+               col-span-2 col-start-2 row-start-3">Home</button>
+          </div>
      </div>
+
+     <!-- Calculator Screen -->
+     <div id="CalcScreen">
+          <div class="grid grid-cols-4 grid-rows-7 gap-4 w-[25%] h-[75%] p-4 
+          mx-[37.5%] my-[12.5%] bg-slate-500 rounded-lg shadow-lg shadow-black
+          justify-center items-center">               
+
+               <div class="col-span-4 row-span-2 grid grid-rows-3 grid-cols-1 bg-slate-700 gap-x-1 rounded-lg">
+                    <div data-previous-operation class="row-span-1 col-span-1 text-right mt-1 mx-1 bg-slate-500 rounded-t-lg">1</div>
+                    <div data-current-operation class="row-span-2 text-[100%] col-span-1 align-text-bottom text-right mb-1 mx-1 bg-slate-500 rounded-b-lg">1</div>
+               </div>
+
+               <button data-all-clear class="col-span-2 bg-slate-700">AC</button>
+               <button data-delete class="bg-slate-700">DEL</button>
+               <button data-operation class="bg-slate-700">÷</button>
+
+               <button data-number class="bg-slate-700">1</button>
+               <button data-number class="bg-slate-700">2</button>
+               <button data-number class="bg-slate-700">3</button>
+               <button data-operation class="bg-slate-700">*</button>
+
+               <button data-number class="bg-slate-700">4</button>
+               <button data-number class="bg-slate-700">5</button>
+               <button data-number class="bg-slate-700">6</button>
+               <button data-operation class="bg-slate-700">+</button>
+
+               <button data-number class="bg-slate-700">7</button>
+               <button data-number class="bg-slate-700">8</button>
+               <button data-number class="bg-slate-700">9</button>
+               <button data-operation class="bg-slate-700">-</button>
+
+               <button data-number class="bg-slate-700">.</button>
+               <button data-number class="bg-slate-700">0</button>
+               <button data-equals class="col-span-2 bg-slate-700">=</button>
+          </div>
+
+     </div>
+
+
 </body>
 
-<script src="functions.js"></script>
+<script src="quiz.js"></script>
+<script src="calc.js"></script>
 
 </html>
