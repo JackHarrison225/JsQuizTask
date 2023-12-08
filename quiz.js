@@ -1,88 +1,124 @@
 //Quiz JS
 
+//play quiz
+document.getElementById("ResetScreen").hidden = true;
+document.getElementById("QuizScreen").hidden = true;
+document.getElementById("FailScreen").hidden = true;
+document.getElementById("Q1").hidden = true;
+document.getElementById("Q2").hidden = true;
+document.getElementById("Q3").hidden = true;
+document.getElementById("Q4").hidden = true;
+document.getElementById("Q5").hidden = true;
+document.getElementById("Q6").hidden = true;
+document.getElementById("Q7").hidden = true;
+document.getElementById("Q8").hidden = true;
+
 //declare vars
 let score = 0;
 let currentQestion = 0;
 let questionArr= [
      {
-          question: "What Is the race librarian?",
+          questionNumber: "Q1",
+          question: "What Is the species librarian?",
           answerA: "Monkey",
           answerB: "Ape",
           answerC: "Human",
           answerD: "Goblin",
-          correctAnswer: "Ape"
+          correctAnswer: "Ape",
+          veryWrongAnswer: "Monkey"
      },
      {
-          question: "In monstrous regiment what race is Maladict?",
-          answerA: "Human",
-          answerB: "Egor",
-          answerC: "Troll",
-          answerD: "Vampire",
-          correctAnswer: "Vampire"
+          questionNumber: "Q2",
+          question: "In monstrous regiment what does maladict the vampire drink?",
+          answerA: "Coco",
+          answerB: "Blood",
+          answerC: "Tea",
+          answerD: "Coffee",
+          correctAnswer: "Coffee",
+          veryWrongAnswer: "Blood"
      },
      {
+          questionNumber: "Q3",
           question: "What is the name of the Captain Sam Vimes' son?",
           answerA: "Detritus",
           answerB: "Dibbler",
           answerC: "Sam",
-          answerD: "Mort",
-          correctAnswer: "Sam"
+          answerD: "Nobby",
+          correctAnswer: "Sam",
+          veryWrongAnswer: "Nobby"
      },
      {
-          question: "Who is Deaths granddaughter?",
+          questionNumber: "Q4",
+          question: "Who is Deaths granddchild?",
           answerA: "Susan",
           answerB: "Ronny",
           answerC: "Lobsang",
           answerD: "Rincewind",
-          correctAnswer: "Susan"
+          correctAnswer: "Susan",
+          veryWrongAnswer: "Ronny"
      },
      {
+          questionNumber: "Q5",
           question: "Who was the Patrition in the book Night Watch?",
           answerA: "Giggling Lord Smince",
           answerB: "Lord Havelock Vetinari",
           answerC: "Homicidal Lord Winder",
           answerD: "Mad Lord Snapcase",
-          correctAnswer: "Homicidal Lord Winder"
+          correctAnswer: "Homicidal Lord Winder",
+          veryWrongAnswer: "Lord Havelock Vetinari"
      },
      {
+          questionNumber: "Q6",
           question: "Who is the Post Master in going postal?",
           answerA: "Reacher Gilt",
           answerB: "Mustrum Ridcully",
           answerC: "Moist von Lipwig",
           answerD: "Mr. Gryle",
-          correctAnswer: "Moist von Lipwig"
+          correctAnswer: "Moist von Lipwig",
+          veryWrongAnswer: "Mr. Gryle"
      },
      {
+          questionNumber: "Q7",
           question: "What is the name of deaths apprentice?",
           answerA: "Albert",
           answerB: "Mort",
           answerC: "Susan",  
-          answerD: "Drumknott",
-          correctAnswer: "Mort"
+          answerD: "Binky",
+          correctAnswer: "Mort",
+          veryWrongAnswer: "Binky"
+     },
+     {
+          questionNumber: "Q8",
+          question: "Finsish the sentance. Truth, Freedom, Justic, reasoably priced Love and ... ",
+          answerA: "a big stake slice",
+          answerB: "a nice juicy burger",
+          answerC: "a sprig of lilic",  
+          answerD: "a hard boiled egg",
+          correctAnswer: "a hard boiled egg",
+          veryWrongAnswer: "a sprig of lilic"
      }
 ];
 
-
 //declare Functions
-function PlayQuiz(Arr)
+function playQuiz(Arr)
 {    
      if(currentQestion+1 > Arr.length)
      {
-          QuizEnd();
+          quizEnd();
      }
      else{
-          AskQuextion(Arr[currentQestion]); //randomQestion
-          SetAnswers(Arr[currentQestion]); //randomQestion
+          askQuextion(Arr[currentQestion]);
+          setAnswers(Arr[currentQestion]);
      }
 }
 
-function AskQuextion(Arr)
+function askQuextion(Arr)
 {
      document.getElementById("Question").innerText = Arr.question;
 }
 
 //this function could be done in a better way 
-function SetAnswers(x)
+function setAnswers(x)
 {    
      let y = Math.floor(Math.random() * 4)
 
@@ -120,49 +156,70 @@ function SetAnswers(x)
 
 }
 
-function CheckAnswer(ansID)
+function checkAnswer(ansID)
 {
      let answerGiven = document.getElementById(ansID).innerText;
      if(answerGiven == questionArr[currentQestion].correctAnswer)
      {
-          ScoreUp();
+          scoreUp();
+          currentQestion++;
+          return playQuiz(questionArr)
+     }
+     else if(answerGiven == questionArr[currentQestion].veryWrongAnswer)
+     {
+          document.getElementById("QuizScreen").hidden = true;
+          document.getElementById("FailScreen").hidden = false;
+          document.getElementById(questionArr[currentQestion].questionNumber).hidden = false;
+          return
+     }
+     else
+     {
+          currentQestion++;
+          return playQuiz(questionArr)
      }
 
-     currentQestion++;
-     return PlayQuiz(questionArr)
 }
 
-function ScoreUp(){
+function scoreUp()
+{
      score++;
 }
 
-function SetTotalScore(){
+function setTotalScore()
+{
      document.getElementById("Total").innerText = "You Scored " + score + "/" + questionArr.length;
 }
 
-function Home(){
+function home()
+{
      score = 0;
      currentQestion = 0;
      document.getElementById("StartScreen").hidden = false;
-     document.getElementById("QuizScreen").hidden = true;
      document.getElementById("ResetScreen").hidden = true;
+     document.getElementById("QuizScreen").hidden = true;
+     document.getElementById("FailScreen").hidden = true;
      document.getElementById("CalcScreen").hidden = true;
-     
+     document.getElementById("Q1").hidden = true;
+     document.getElementById("Q2").hidden = true;
+     document.getElementById("Q3").hidden = true;
+     document.getElementById("Q4").hidden = true;
+     document.getElementById("Q5").hidden = true;
+     document.getElementById("Q6").hidden = true;
+     document.getElementById("Q7").hidden = true;
+     document.getElementById("Q8").hidden = true;
 }
-function StartQuiz(){
+
+function startQuiz()
+{
      document.getElementById("ResetScreen").hidden = true;
      document.getElementById("QuizScreen").hidden = false;
      document.getElementById("StartScreen").hidden = true;   
-     PlayQuiz(questionArr);
+     playQuiz(questionArr);
 }
-function QuizEnd(){
+
+function quizEnd()
+{
      document.getElementById("QuizScreen").hidden = true;
      document.getElementById("ResetScreen").hidden = false;
-     SetTotalScore();
+     setTotalScore();
 }
-
-
-//play quiz
-document.getElementById("ResetScreen").hidden = true;
-document.getElementById("QuizScreen").hidden = true;
-PlayQuiz(questionArr)

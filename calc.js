@@ -1,59 +1,99 @@
 //use Calculator
 document.getElementById("CalcScreen").hidden = true;
 
-class Calculator{
-     constructor(curOperation, prevOperation){
-          this.curOperation = curOperation;
-          this.prevOperation = prevOperation;
-          this.clear();
-     }
+let operation = "+";
 
-     clear()
-     {
-          this.curOperation = "";
-          this.prevOperation = "";
-          this.operation = undefined;
-     }
-
-     delete()
-     {
-
-     }
-
-     changeNumber(number)
-     {
-
-     }
-
-     chooseOperation(operation)
-     {
-
-     }
-
-     Compute()
-     {
-
-     }
-
-     changeDisplay()
-     {
-
-     }
-
-}
-
-const numberButtons = document.querySelectorAll('[data-number]')
-const operationButtons = document.querySelectorAll('[data-operation]')
-const equals = document.querySelector('[data-equal]')
-const prevOperation = document.querySelector('[data-previous-operation]')
-const curOperation = document.querySelector('[data-current-operation]')
-
-
-const calculator = new Calculator(curOperation, prevOperation)
-
-function StartCalc()
+function startCalc()
 {
      document.getElementById("StartScreen").hidden = true;
      document.getElementById("CalcScreen").hidden = false;
 }
 
+function clearAll()
+{
+     x = "0";
+     document.getElementById("current-operation").innerText = x
+     document.getElementById("previous-operation").innerText = x
+}
+
+function deleteOne()
+{
+    x = document.getElementById("current-operation").innerText
+    x = x.slice(0,-1)
+    if(x == "")
+    {
+          x = 0
+    }
+    document.getElementById("current-operation").innerText = x
+}
+
+function updateNum(num)
+{
+     y = document.getElementById(num).innerText
+     x = document.getElementById("current-operation").innerText;
+
+     if(x == 0 && y != ".")
+     {
+          x = y;
+     }
+     else
+     {
+          x = x.split("");
+          x.push(y);
+          x = x.join("");
+     }
+
+     document.getElementById("current-operation").innerText = x
+}
+
+function setOperation(newOperation)
+{
+     let x = "0";
+     let cur = document.getElementById("current-operation").innerText
+     let prev = document.getElementById("previous-operation").innerText 
+
+     switch (operation)
+     {
+          case "+":
+               document.getElementById("previous-operation").innerText = Number(prev) + Number(cur);
+               break;
+          case "/":
+               document.getElementById("previous-operation").innerText = Number(prev)/Number(cur);
+               break;
+          case "-":
+               document.getElementById("previous-operation").innerText = Number(prev) - Number(cur);
+               break;
+          case "*":
+               document.getElementById("previous-operation").innerText = Number(prev) * Number(cur);
+               break;
+     }
+
+     document.getElementById("current-operation").innerText = x;
+     operation = document.getElementById(newOperation).innerText;
+}
+
+function equals()
+{
+     let x = "0";
+     let cur = document.getElementById("current-operation").innerText
+     let prev = document.getElementById("previous-operation").innerText 
+
+     switch (operation)
+     {
+          case "+":
+               document.getElementById("current-operation").innerText = Number(prev) + Number(cur);
+               break;
+          case "/":
+               document.getElementById("current-operation").innerText = Number(prev)/Number(cur);
+               break;
+          case "-":
+               document.getElementById("current-operation").innerText = Number(prev) - Number(cur);
+               break;
+          case "*":
+               document.getElementById("current-operation").innerText = Number(prev) * Number(cur);
+               break;
+     }
+
+     operation = "+";
+     document.getElementById("previous-operation").innerText = x;
+}

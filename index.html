@@ -7,42 +7,45 @@
      <title>Quiz</title>
 </head>
 
-<body class="h-full w-full">
+<body class="h-full w-full bg-[#56dae9] overflow-hidden font-mono">
+     <button onclick="home()" class="absolute left-8 top-8 rounded-lg bg-[#6787b7]
+     border-1 b-1 p-1 border-slate-700">Home</button>
      <!-- start screen for before the quiz -->
      <div id="StartScreen">
           <div class="grid grid-cols-4 grid-rows-3 w-[50%] h-[50%] gap-4  p-4
-          mx-[25%] my-[12.5%] bg-slate-500 rounded-lg shadow-lg shadow-black">
+          mx-[25%] my-[12.5%] bg-[#6787b7] rounded-lg shadow-lg shadow-black">
 
-               <h2 class="col-span-4 text-center">Page Name</h2>
-
+               <h2 class="col-span-4 text-center text-2xl underline">Quiz and Calculator</h2>
+               <p class="col-span-4 text-center">This is my one page site that contains a calculator and a quiz using JavaScript.</p>
                <button 
                class="bg-green-700 rounded-xl p-3 row-start-3 col-start-1 col-span-2" 
-               onclick="StartQuiz()">Quiz</button>
+               onclick="startQuiz()">Quiz</button>
 
                <button 
                class="bg-green-700 rounded-xl  md:p-3 row-start-3 col-start-3 col-span-2 overflow-hidden" 
-               onclick="StartCalc()">Calculator</button>
+               onclick="startCalc()">Calculator</button>
           </div>
      </div>
 
      <!-- screen for quiz -->
      <div id="QuizScreen"> 
           <div class="grid grid-cols-4 grid-rows-3 w-[50%] h-[50%] gap-4  p-4
-               mx-[25%] my-[12.5%] bg-slate-500 rounded-lg shadow-lg shadow-black ">
-               <h2 class="col-span-4 text-center">QUIZ</h2>
+               mx-[25%] my-[12.5%] bg-[#6787b7] rounded-lg shadow-lg shadow-black ">
+               <h2 class="col-span-4 text-center text-2xl underline">QUIZ</h2>
 
-               <h3 id="Question" class="col-span-4 row-span-1"></h3>
-               <button id="ans1" onclick="CheckAnswer('ans1')" 
-                    class="bg-slate-200 rounded-xl p-3
+               <h3 id="Question" class="col-span-4 row-span-1 text-xl"></h3>
+
+               <button id="ans1" onclick="checkAnswer('ans1')" 
+                    class="bg-[#ffffff] hover:bg-[#b3d4fc] rounded-xl p-3
                     md:row-start-3 md:col-span-1 col-span-4"></button>
-               <button id="ans2" onclick="CheckAnswer('ans2')" 
-                    class="bg-slate-200 rounded-xl p-3
+               <button id="ans2" onclick="checkAnswer('ans2')" 
+                    class="bg-[#ffffff] hover:bg-[#b3d4fc] rounded-xl p-3
                     md:row-start-3 md:col-span-1 col-span-4"></button>
-               <button id="ans3" onclick="CheckAnswer('ans3')" 
-                    class="bg-slate-200 rounded-xl p-3
+               <button id="ans3" onclick="checkAnswer('ans3')" 
+                    class="bg-[#ffffff] hover:bg-[#b3d4fc] rounded-xl p-3
                     md:row-start-3 md:col-span-1 col-span-4"></button>
-               <button id="ans4" onclick="CheckAnswer('ans4')" 
-                    class="bg-slate-200 rounded-xl p-3
+               <button id="ans4" onclick="checkAnswer('ans4')" 
+                    class="bg-[#ffffff] hover:bg-[#b3d4fc] rounded-xl p-3
                     md:row-start-3 md:col-span-1 col-span-4"></button>
           </div>
      </div>
@@ -50,50 +53,155 @@
      <!-- end of quiz screen for total score and restart button -->
      <div id="ResetScreen">
           <div class="grid grid-cols-4 grid-rows-3 w-[50%] h-[50%] gap-4 p-4 
-          mx-[25%] my-[12.5%] bg-slate-500 rounded-lg shadow-lg shadow-black">
+          mx-[25%] my-[12.5%] bg-[#6787b7] rounded-lg shadow-lg shadow-black">
                <h3 class="col-span-4 text-center">Quiz Over</h3>
                <p id="Total" class="col-span-4"></p>
-               <button onclick="Home()" 
+               <button onclick="home()" 
                class="bg-red-700 rounded-xl p-3 
                col-span-2 col-start-2 row-start-3">Home</button>
           </div>
      </div>
 
-     <!-- Calculator Screen -->
-     <div id="CalcScreen">
-          <div class="grid grid-cols-4 grid-rows-7 gap-4 w-[25%] h-[75%] p-4 
-          mx-[37.5%] my-[12.5%] bg-slate-500 rounded-lg shadow-lg shadow-black
-          justify-center items-center">               
+     <!-- FailScreen -->
+     <div id="FailScreen">
 
-               <div class="col-span-4 row-span-2 grid grid-rows-3 grid-cols-1 bg-slate-700 gap-x-1 rounded-lg">
-                    <div data-previous-operation class="row-span-1 col-span-1 text-right mt-1 mx-1 bg-slate-500 rounded-t-lg">1</div>
-                    <div data-current-operation class="row-span-2 text-[100%] col-span-1 align-text-bottom text-right mb-1 mx-1 bg-slate-500 rounded-b-lg">1</div>
+          <div class="w-[50%] h-[50%] gap-4 p-4 
+          mx-[25%] my-[12.5%] bg-[#6787b7] rounded-lg shadow-lg shadow-black">
+
+               <div id="Q1">
+                    <div class="grid w-full h-full grid-cols-2">
+                         <img src="Images/Libraian.png" class="rounded-lg overflow-hidden w-full h-full col-span-1">
+                         <div class="col-span-1 grid grid-cols-1 w-full h-full grid-rows-5">
+                              <h3 class="row-span-1 text-center text-2xl underline">Ook</h3>
+                              <p class="row-span-4 justify-between px-1">The librarian dose not take kindly to bing called a monkey. <br>
+                                    Please do not use the m word around him.<br>
+                                    Click the home button and restart the quiz.</p>
+                         </div>
+                    </div>
+               </div>
+               
+               <div id="Q2">
+                    <div class="grid w-full h-full grid-cols-2">
+                         <img src="Images/Maladict.png" class="rounded-lg overflow-hidden w-full h-full col-span-1">
+                         <div class="col-span-1 grid grid-cols-1 w-full h-full grid-rows-5">
+                              <h3 class="row-span-1 text-center text-2xl underline">b..b...BLOOD</h3>
+                              <p class="row-span-4 justify-between px-1">Maladict is a vampire but they are a black ribboner.<br>
+                                   They went cold bad two years prior to the book substituting blood for a new addiction.<br>
+                                   Press the home button and restart the quiz.
+                              </p>
+                         </div>
+                    </div>
                </div>
 
-               <button data-all-clear class="col-span-2 bg-slate-700">AC</button>
-               <button data-delete class="bg-slate-700">DEL</button>
-               <button data-operation class="bg-slate-700">÷</button>
+               <div id="Q3">
+                    <div class="grid w-full h-full grid-cols-2">
+                         <img src="Images/SamualVimes.png" class="rounded-lg overflow-hidden w-full h-full col-span-1">
+                         <div class="col-span-1 grid grid-cols-1 w-full h-full grid-rows-5">
+                              <h3 class="row-span-1 text-center text-2xl underline">Nobby Nobbs you must be joking</h3>
+                              <p class="row-span-4 justify-between px-1">Nobby Nobbs must carry a chitty to say he's human. <br>
+                                   I doubt if even his own mother would admit to being related. <br>
+                                   Click the home button and restart the quiz.</p>
+                         </div>
+                    </div>
+               </div>
 
-               <button data-number class="bg-slate-700">1</button>
-               <button data-number class="bg-slate-700">2</button>
-               <button data-number class="bg-slate-700">3</button>
-               <button data-operation class="bg-slate-700">*</button>
+               <div id="Q4">
+                    <div class="grid w-full h-full grid-cols-2">
+                         <img src="Images/Kaos.png" class="rounded-lg overflow-hidden w-full h-full col-span-1">
+                         <div class="col-span-1 grid grid-cols-1 w-full h-full grid-rows-5">
+                              <h3 class="row-span-1 text-center text-2xl underline">Ronny Kaos</h3>
+                              <p class="row-span-4 justify-between px-1">Chaos aka Ronny Chaos was one of the five horse men of the Apocralypse. <br>
+                                   He is the grand child to nobody.<br>
+                                   Click the home button and restart the quiz.</p>
+                         </div>
+                    </div>
+               </div>
+               
+               <div id="Q5">
+                    <div class="grid w-full h-full grid-cols-2">
+                         <img src="images/Vetinary.png" class="rounded-lg overflow-hidden w-full h-full col-span-1">
+                         <div class="col-span-1 grid grid-cols-1 w-full h-full grid-rows-5">
+                              <h3 class="row-span-1 text-center text-2xl underline">Dont let me detain you</h3>
+                              <p class="row-span-4 justify-between px-1">Although Lord Havelock Vetinari is the patrician, in nightwatch he is still in the school of assasins and just a boy.<br>
+                                   Click the home button and restart the quiz.</p>
+                         </div>
+                    </div>
+               </div>
+               
+               <div id="Q6">
+                    <div class="grid w-full h-full grid-cols-2">
+                         <img src="Images/MrGryle.png" class="rounded-lg overflow-hidden w-full h-full col-span-1">
+                         <div class="col-span-1 grid grid-cols-1 w-full h-full grid-rows-5">
+                              <h3 class="row-span-1 text-center text-2xl underline">Ooooh ewww ooooh eww ohhh</h3>
+                              <p class="row-span-4 text-center">Mr. Gryle was the banchie who attempted to kill the post master genral
+                                   Click the home button and restart the quiz.</p>
+                         </div>
+                    </div>
+               </div>
+               
+               <div id="Q7">
+                    <div class="grid w-full h-full grid-cols-2">
+                         <img src="Images/Binky.png" class="rounded-lg overflow-hidden w-full h-full col-span-1">
+                         <div class="col-span-1 grid grid-cols-1 w-full h-full grid-rows-5">
+                              <h3 class="row-span-1 text-center text-2xl underline">BINKY IS THE HORSE</h3>
+                              <p class="row-span-4 justify-between px-1">BINKY WAS THE HORSE OF DEATH AND WAS NAMED BY DEATH HIMSELF.<br>
+                                   CLICK THE HOME BUTTON AND RESTART THE QUIZ.</p>
+                         </div>
+                    </div>
+               </div>
 
-               <button data-number class="bg-slate-700">4</button>
-               <button data-number class="bg-slate-700">5</button>
-               <button data-number class="bg-slate-700">6</button>
-               <button data-operation class="bg-slate-700">+</button>
+               <div id="Q8">
+                    <div class="grid w-full h-full grid-cols-2">
+                         <img src="Images/25thMay.png" class="rounded-lg overflow-hidden w-full h-full col-span-1">
+                         <div class="col-span-1 grid grid-cols-1 w-full h-full grid-rows-5">
+                              <h3 class="row-span-1 text-center text-2xl underline">If you werent there dont ask</h3>
+                              <p class="row-span-4 justify-between px-1">The glorious 25th of may o7.<br>
+                                   Always wear the lilic.<br> Click on the home button to try again.
+                              </p>
+                         </div>
+                    </div>
+               </div>
 
-               <button data-number class="bg-slate-700">7</button>
-               <button data-number class="bg-slate-700">8</button>
-               <button data-number class="bg-slate-700">9</button>
-               <button data-operation class="bg-slate-700">-</button>
-
-               <button data-number class="bg-slate-700">.</button>
-               <button data-number class="bg-slate-700">0</button>
-               <button data-equals class="col-span-2 bg-slate-700">=</button>
           </div>
 
+     </div>
+
+     <!-- Calculator Screen -->
+     <div id="CalcScreen">
+          <div class="grid grid-cols-4 grid-rows-7 gap-4 w-[25%] h-[75%] p-4 max-sm:w-[75%] max-sm:h-[75%]
+          mx-[37.5%] max-sm:mx-[12.5%] my-[12.5%] bg-slate-500 rounded-lg shadow-lg shadow-black
+          justify-center items-center">               
+
+               <div class="min-h-full min-w-full items-center col-span-4 row-span-2 grid grid-rows-3 grid-cols-1 bg-slate-700 gap-x-1 pr-1 rounded-lg">
+                    <div id="previous-operation" class="row-span-1 col-span-1 text-right 
+                    h-[90%]  w-[99%] mx-1 mt-1 bg-blue-500 rounded-t-lg">0</div>
+                    <div id="current-operation" class="row-span-2 col-span-1 align-text-bottom 
+                    h-[90%] w-[99%] mx-1 mb-1 text-4xl  text-right bg-blue-500 rounded-b-lg">0</div>
+               </div>
+
+               <button id="clear" onclick="clearAll()" class="col-span-2 bg-[#ffffff] hover:bg-[#b3d4fc]">AC</button>
+               <button id="delete" onclick="deleteOne()" class="bg-[#ffffff] hover:bg-[#b3d4fc]">DEL</button>
+               <button id="operation/" onclick="setOperation('operation/')" class="bg-[#ffffff] hover:bg-[#b3d4fc]">/</button>
+
+               <button id="number1" onclick="updateNum('number1')" class="bg-[#ffffff] hover:bg-[#b3d4fc]">1</button>
+               <button id="number2" onclick="updateNum('number2')" class="bg-[#ffffff] hover:bg-[#b3d4fc]">2</button>
+               <button id="number3" onclick="updateNum('number3')" class="bg-[#ffffff] hover:bg-[#b3d4fc]">3</button>
+               <button id="operation*" onclick="setOperation('operation*')" class="bg-[#ffffff] hover:bg-[#b3d4fc]">*</button>
+
+               <button id="number4" onclick="updateNum('number4')" class="bg-[#ffffff] hover:bg-[#b3d4fc]">4</button>
+               <button id="number5" onclick="updateNum('number5')" class="bg-[#ffffff] hover:bg-[#b3d4fc]">5</button>
+               <button id="number6" onclick="updateNum('number6')" class="bg-[#ffffff] hover:bg-[#b3d4fc]">6</button>
+               <button id="operation+" onclick="setOperation('operation+')" class="bg-[#ffffff] hover:bg-[#b3d4fc]">+</button>
+
+               <button id="number7" onclick="updateNum('number7')" class="bg-[#ffffff] hover:bg-[#b3d4fc]">7</button>
+               <button id="number8" onclick="updateNum('number8')" class="bg-[#ffffff] hover:bg-[#b3d4fc]">8</button>
+               <button id="number9" onclick="updateNum('number9')" class="bg-[#ffffff] hover:bg-[#b3d4fc]">9</button>
+               <button id="operation-" onclick="setOperation('operation-')" class="bg-[#ffffff] hover:bg-[#b3d4fc]">-</button>
+
+               <button id="number." onclick="updateNum('number.')" class="bg-[#ffffff] hover:bg-[#b3d4fc]">.</button>
+               <button id="number0" onclick="updateNum('number0')" class="bg-[#ffffff] hover:bg-[#b3d4fc]">0</button>
+               <button id="equals" onclick="equals()"class="col-span-2 bg-[#ffffff] hover:bg-[#b3d4fc]">=</button>
+          </div>
      </div>
 
 
